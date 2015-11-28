@@ -39,4 +39,4 @@ function dataHandler(data){
 		}
 	);
 }
-Accel.on("data")
+Accel.on("data",dataHandler);
