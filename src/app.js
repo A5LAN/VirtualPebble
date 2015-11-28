@@ -10,9 +10,17 @@ var Accel = require('ui/accel');
 var ajax = require('ajax');
 Accel.init();
 
-setTimeout(function main(){
-  console.log("test");
+var main = new UI.Card({
+  title: 'Pebble.js',
+  icon: 'images/menu_icon.png',
+  subtitle: 'Hello World!',
+  body: 'Press any button.'
+});
+
+main.show();
+
+main.on('click', 'up', function(e) {
   Accel.on('data', function(e) {
     console.log('Just received ' + e.samples + ' from the accelerometer.');
   });
-},3000)
+});
