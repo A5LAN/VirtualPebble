@@ -18,11 +18,24 @@
 				console.log('I am '+id);
 			});
 			window.configure = function configure(){
-				socket.emit("couple","::ffff:129.100.253.87");
+				socket.emit("couple","::ffff:129.100.133.128");
 			}
+			var lastRunningAvgJerk = {x:0,y:0,z:0};
+			var runningAvgJerk = {x:0,y:0,z:0};
+			var dimensions = ["x","y","z"];
 			socket.on("test", function(data){
 				positionData = data.accel;
 				jerkData = data.jerk;
+				
+				Do the running avg
+				for(var degree in dimensions){
+					runningAvgJerk[degree] = jerkData[degree]/2 + runningAvgJerk[degree]/2
+					if(runningAvgJerk[degree] > lastRunningAvgJerk*1.5){
+						console.log("above 1.5");
+					}
+				}
+				lastRunningAvgJerk = runningAvgJerk;
+				
 			});
 		</script>
 	</head>
@@ -87,7 +100,7 @@
 	// create a new mesh with sphere geometry -
 	// we will cover the sphereMaterial next!
 	var sphere = new THREE.Mesh(
-	   new THREE.SphereGeometry(radius, segments, rings),
+	   new THREE.CubeGeometry(100,100,100),
 	   sphereMaterial);
 	// add the sphere to the scene
 	scene.add(sphere);
