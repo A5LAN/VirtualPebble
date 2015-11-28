@@ -6,10 +6,10 @@
 		<script src="http://threejs.org/build/three.min.js"></script>
 		<script src="http://threejs.org/examples/js/effects/StereoEffect.js"></script>
 		<script src="http://threejs.org/examples/js/Detector.js"></script>
-		<script src="/example/js/DeviceOrientationControls.js"></script>
-		<script src="/example/js/StereoEffect.js"></script>
-		<script src="/example/js/DeviceOrientationControls.js"></script>
-		<script src="/example/js/OrbitControls.js"></script>
+		<script src="http://threejs.org/example/js/DeviceOrientationControls.js"></script>
+		<script src="http://threejs.org/example/js/StereoEffect.js"></script>
+		<script src="http://threejs.org/example/js/DeviceOrientationControls.js"></script>
+		<script src="http://threejs.org/example/js/OrbitControls.js"></script>
 	</head>
 	<body style='max-height:1000px'>
 	</body>
@@ -30,16 +30,6 @@
 			
 			var boxing;
 			function init() {
-				var loader = new THREE.JSONLoader();
-			    loader.load( "/example/js/practice.json", function(geometry,materials){
-			    	console.log('thing');
-			      boxing = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial( materials ));
-			      boxing.position.z = 3194;
-			      boxing.position.x = -1;
-			      boxing.position.y = 3;
-			      boxing.rotation.x = Math.PI;
-			      scene.add(boxing);
-			    });
 				renderer = new THREE.WebGLRenderer();
 				element = renderer.domElement;
 				container = document.createElement( 'div' );
@@ -109,19 +99,8 @@
 			}
 			function update(dt) {
 				resize();
-				swing(dt);
 				camera.updateProjectionMatrix();
 				controls.update(dt);
-			}
-			function swing(dt){
-				if(interalSwingFactor > 0 ){
-					boxing.rotation.x = Math.PI + (interalSwingFactor/3000)*Math.cos(swingfactor);
-					swingfactor -= 10*dt;
-					interalSwingFactor -= 1000*dt;
-				} else if (swingfactor > 0 ) {
-					swingfactor = 0;
-				}
-				
 			}
 			function render(dt) {
 				effect.render(scene, camera);
@@ -141,13 +120,6 @@
 				} else if (container.webkitRequestFullscreen) {
 					container.webkitRequestFullscreen();
 				}
-			}
-			function punch(strength){
-				console.log('OW, that hurt like '+strength + ' badgers');
-			if(swingfactor ==0){
-				swingfactor = strength;
-				interalSwingFactor = strength;
-			}
 			}
 		</script>
 </html>
