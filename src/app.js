@@ -10,10 +10,7 @@ var Accel = require('ui/accel');
 var ajax = require('ajax');
 Accel.init();
 var main = new UI.Card({
-	title: 'Virtual Pebble',
-	icon: 'images/lion.png',
-	subtitle: 'Welcome',
-	body: 'Press any button.'
+  banner: 'images/menu_icon.png',
 });
 
 main.show();
@@ -32,7 +29,8 @@ function dataHandler(data){
 	};
 	ajax(
 		{
-			url: 'http://ianisabitch.xyz/balls',
+			url: 'http://ianisabitch.xyz/data',
+			method: 'POST',
 			type: 'json',
 			data: {accel:accelSum, jerk:jerkSum}
 		},
