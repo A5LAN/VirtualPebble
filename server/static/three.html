@@ -12,11 +12,12 @@
 		<script src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript">
 			var socket = io();
+			var positionData = {x:0,y:0,z:0};
 			socket.on('identify', function(id){
 				console.log('I am '+id);
 			});
-			socket.on("test", function(){
-				debugger;
+			socket.on("test", function(data){
+				positionData = data.accel;
 			});
 		</script>
 	</head>
@@ -79,7 +80,9 @@
 	var sphere = new THREE.Mesh(
 	   new THREE.SphereGeometry(radius, segments, rings),
 	   sphereMaterial);
-
+	sphere.position.x = positionData.x/1000;
+	sphere.position.y = positionData.y/1000;
+	sphere.position.z = positionData.z/1000;
 	// add the sphere to the scene
 	scene.add(sphere);
 
