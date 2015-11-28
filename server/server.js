@@ -14,14 +14,14 @@ app.post('/data',function(req,res){
 		console.log(data);
 		try {
 			data = JSON.parse(data);
-			
+			sockets.send("::ffff:129.100.253.87",data,"test");
 		} catch(err){
 			console.log("JSON ERROR:" + err);
 		}
 	});
 	res.sendStatus(200);
 	res.end("test");
-	sockets.send("::ffff:129.100.253.87",data,"test");
+	
 });
 
 io.on('connection',function(socket){
