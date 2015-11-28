@@ -108,9 +108,9 @@
 	animate();
 
 	function update(dt) {
-		sphere.position.x = positionData.x/500;
-		sphere.position.y = positionData.y/500;
-		sphere.position.z = positionData.z/500;
+		sphere.position.x = positionData.z/500;
+		sphere.position.y = positionData.x/500;
+		sphere.position.z = positionData.y/500;
 		camera.updateProjectionMatrix();
 	}
 
