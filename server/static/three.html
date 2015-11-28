@@ -32,7 +32,7 @@
 				positionData = data.accel;
 				jerkData = data.jerk;
 				
-				/*Do the running avg
+				//Do the running avg
 				for(var degree in dimensions){
 					runningAvgJerk[degree] = jerkData[degree]/2 + runningAvgJerk[degree]/2
 					if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*10){
@@ -71,9 +71,9 @@
 					else { 
 						console.log("other");
 					}
-				} */
+				}
 				lastRunningAvgJerk = runningAvgJerk;
-				console.log (Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])
+				
 			});
 		</script>
 	</head>
