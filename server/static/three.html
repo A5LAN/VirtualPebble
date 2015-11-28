@@ -4,7 +4,7 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 			#container {
-				background: #FFF;
+				background: #000;
 				width: 550px;
 				height: 300px;
 			}
@@ -97,6 +97,8 @@
 	pointLight.position.y = 50;
 	pointLight.position.z = 130;
 
+	var light = new THREE.AmbientLight( 0x404040 ); // soft white light
+	scene.add( light );
 	// add to the scene
 	scene.add(pointLight);
 
