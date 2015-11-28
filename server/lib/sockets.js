@@ -7,6 +7,7 @@ var _viewers = {};
 sockets.save = function(socket, callback){
 	if(typeof socket == 'object'){
 		var socketName =  this.extractSessionId(socket);
+		console.log(socketName);
 		_sockets[socketName] = socket;
 	} else {
 		console.log(socket+' is not a valid socket');
