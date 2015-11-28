@@ -10,6 +10,7 @@
         "media": [
             {
                 "file": "images/menu_icon.png",
+                "menuIcon": true,
                 "name": "IMAGE_MENU_ICON",
                 "type": "png"
             },
@@ -27,10 +28,9 @@
                 "file": "fonts/UbuntuMono-Regular.ttf",
                 "name": "MONO_FONT_14",
                 "type": "font"
-            },
+            }
             {
                 "file": "images/lion.png",
-                "menuIcon": true,
                 "name": "IMAGES_LION_PNG",
                 "type": "png"
             }
@@ -50,3 +50,4 @@
         "watchface": false
     }
 }
+

@@ -27,7 +27,7 @@
 				positionData = data.accel;
 				jerkData = data.jerk;
 				
-				Do the running avg
+				//Do the running avg
 				for(var degree in dimensions){
 					runningAvgJerk[degree] = jerkData[degree]/2 + runningAvgJerk[degree]/2
 					if(runningAvgJerk[degree] > lastRunningAvgJerk*1.5){
