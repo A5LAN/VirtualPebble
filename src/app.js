@@ -11,7 +11,7 @@ var ajax = require('ajax');
 Accel.init();
 var main = new UI.Card({
   title: 'Virtual Pebble',
-  icon: 'images/menu_icon.png',
+  icon: 'images/item_icon.png',
   subtitle: 'Welcome',
   body: 'Press any button.'
 });
@@ -20,8 +20,11 @@ main.show();
 
 main.on('click', 'up', function(e) {
   Accel.on('data', function(e) {
-    for( var test in e ){
-      console.log(e[test]);
+    for( var accelIndex in e.accels ){
+      console.log("x:"+e.accels[accelIndex].x);
+      console.log("y:"+e.accels[accelIndex].y);
+      console.log("z:"+e.accels[accelIndex].z);
+      console.log("time:"+e.accels[accelIndex].time);
     }
   });
 });
