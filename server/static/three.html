@@ -2,124 +2,126 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			#container {
+				background: #000;
+				width: 550px;
+				height: 300px;
+			}
+		</style>
 		<script src="/socket.io/socket.io.js"></script>
-		<script src="http://threejs.org/build/three.min.js"></script>
-		<script src="http://threejs.org/examples/js/effects/StereoEffect.js"></script>
-		<script src="http://threejs.org/examples/js/Detector.js"></script>
-		<script src="http://threejs.org/example/js/DeviceOrientationControls.js"></script>
-		<script src="http://threejs.org/example/js/StereoEffect.js"></script>
-		<script src="http://threejs.org/example/js/DeviceOrientationControls.js"></script>
-		<script src="http://threejs.org/example/js/OrbitControls.js"></script>
-	</head>
-	<body style='max-height:1000px'>
-	</body>
-	<script type="text/javascript">
+		<script type="text/javascript">
 			var socket = io();
+			var positionData = {x:0,y:0,z:0};
 			socket.on('identify', function(id){
 				console.log('I am '+id);
 			});
-			socket.on('punch',punch);
-			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-			var camera, scene, renderer;
-			var effect, controls;
-			var element, container;
-			var opponent;
-			var swingfactor = 0,interalSwingFactor=0;
-			var clock = new THREE.Clock();
-			init();
-			
-			var boxing;
-			function init() {
-				renderer = new THREE.WebGLRenderer();
-				element = renderer.domElement;
-				container = document.createElement( 'div' );
-				document.body.appendChild( container );
-				container.appendChild(element);
-				effect = new THREE.StereoEffect(renderer);
-				scene = new THREE.Scene();
-				//camera = new THREE.PerspectiveCamera(90, 1, 0.001, 700);
-				camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 1, 100000 );
-				camera.position.z = 3200;
-				//camera.position.set(0, 10, 0);
-				scene.add(camera);
-				controls = new THREE.OrbitControls(camera, element);
-				controls.rotateUp(Math.PI / 4);
-				controls.target.set(
-					camera.position.x + 0.1,
-					camera.position.y,
-					camera.position.z
-				);
-				controls.noZoom = true;
-				controls.noPan = true;
-				function setOrientationControls(e) {
-					if (!e.alpha) {
-						return;
-					}
-					controls = new THREE.DeviceOrientationControls(camera, true);
-					controls.connect();
-					controls.update();
-					element.addEventListener('click', fullscreen, false);
-					window.removeEventListener('deviceorientation', setOrientationControls, true);
-				}
-				window.addEventListener('deviceorientation', setOrientationControls, true);
-				window.addEventListener('click', fullscreen, false);
-				var path = "/example/images/";
-				var format = '.jpg';
-				var urls = [
-					path + 'px' + format, path + 'nx' + format,
-					path + 'py' + format, path + 'ny' + format,
-					path + 'pz' + format, path + 'nz' + format
-				];
-				var textureCube = THREE.ImageUtils.loadTextureCube( urls, THREE.CubeRefractionMapping );
-				//var material = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube, refractionRatio: 0.95 } );
-				var material = new THREE.MeshBasicMaterial( { color: 0xffffff});
-				var light = new THREE.AmbientLight( 0x707070 ); // soft white light
-				scene.add( light );
-				var shader = THREE.ShaderLib[ "cube" ];
-				shader.uniforms[ "tCube" ].value = textureCube;
-				var material = new THREE.ShaderMaterial( {
-					fragmentShader: shader.fragmentShader,
-					vertexShader: shader.vertexShader,
-					uniforms: shader.uniforms,
-					side: THREE.BackSide
-				} ),
-				mesh = new THREE.Mesh( new THREE.BoxGeometry( 100000, 100000, 100000 ), material );
-				scene.add( mesh );
-				window.addEventListener('resize', resize, false);
-				setTimeout(resize, 1);
-				animate();
-			}
-			function resize() {
-				var width = container.offsetWidth;
-				var height = container.offsetHeight;
-				camera.aspect = width / height;
-				camera.updateProjectionMatrix();
-				renderer.setSize(width, height);
-				effect.setSize(width, height);
-			}
-			function update(dt) {
-				resize();
-				camera.updateProjectionMatrix();
-				controls.update(dt);
-			}
-			function render(dt) {
-				effect.render(scene, camera);
-			}
-			function animate(t) {
-				requestAnimationFrame(animate);
-				update(clock.getDelta());
-				render(clock.getDelta());
-			}
-			function fullscreen() {
-				if (container.requestFullscreen) {
-					container.requestFullscreen();
-				} else if (container.msRequestFullscreen) {
-					container.msRequestFullscreen();
-				} else if (container.mozRequestFullScreen) {
-					container.mozRequestFullScreen();
-				} else if (container.webkitRequestFullscreen) {
-					container.webkitRequestFullscreen();
-				}
-			}
+			socket.on("test", function(data){
+				positionData = data.accel;
+			});
 		</script>
+	</head>
+	<body>
+
+		<div id="container">
+
+
+		</div>
+
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+		<script src="http://threejs.org/build/three.min.js"></script>
+
+	<script type="text/javascript">
+
+	// set the scene size
+	var WIDTH = 550,
+	    HEIGHT = 300;
+
+	// set some camera attributes
+	var VIEW_ANGLE = 45,
+	    ASPECT = WIDTH / HEIGHT,
+	    NEAR = 0.1,
+	    FAR = 10000;
+
+	// get the DOM element to attach to
+	// - assume we've got jQuery to hand
+	var $container = $('#container');
+
+	// create a WebGL renderer, camera
+	// and a scene
+	var renderer = new THREE.WebGLRenderer( {alpha: true});
+	var camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
+	                                ASPECT,
+	                                NEAR,
+	                                FAR  );
+	var scene = new THREE.Scene();
+
+	var clock = new THREE.Clock();
+
+
+	// the camera starts at 0,0,0 so pull it back
+	camera.position.z = 300;
+
+	// start the renderer
+	renderer.setSize(WIDTH, HEIGHT);
+	renderer.setClearColor( 0xffffff, 0);
+
+
+	// attach the render-supplied DOM element
+	$container.append(renderer.domElement);
+
+	// create the sphere's material
+	var sphereMaterial = new THREE.MeshLambertMaterial(
+	{
+	    color: 0xCC0000
+	});
+
+	// set up the sphere vars
+	var radius = 50, segments = 16, rings = 16;
+
+	// create a new mesh with sphere geometry -
+	// we will cover the sphereMaterial next!
+	var sphere = new THREE.Mesh(
+	   new THREE.SphereGeometry(radius, segments, rings),
+	   sphereMaterial);
+	// add the sphere to the scene
+	scene.add(sphere);
+
+	// and the camera
+	scene.add(camera);
+
+	// create a point light
+	var pointLight = new THREE.PointLight( 0xFFFFFF );
+
+	// set its position
+	pointLight.position.x = 10;
+	pointLight.position.y = 50;
+	pointLight.position.z = 130;
+
+	var light = new THREE.AmbientLight( 0x404040 ); // soft white light
+	scene.add( light );
+	// add to the scene
+	scene.add(pointLight);
+
+	function animate(t) {
+		requestAnimationFrame(animate);
+		update(clock.getDelta());
+		render(clock.getDelta());
+	}
+	animate();
+
+	function update(dt) {
+		sphere.position.x = sphere.position.x/2 + positionData.y/500;
+		sphere.position.y = sphere.position.z/2 + positionData.z/500;
+		sphere.position.z = sphere.position.y/2 + positionData.x/500;
+		camera.updateProjectionMatrix();
+	}
+
+	function render(dt) {
+		renderer.render(scene, camera);
+	}
+	</script>
+</html>
+
 </html>

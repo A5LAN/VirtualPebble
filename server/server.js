@@ -14,17 +14,17 @@ app.post('/data',function(req,res){
 		console.log(data);
 		try {
 			data = JSON.parse(data);
-			
+			sockets.send(req.ip,data,"test");
 		} catch(err){
 			console.log("JSON ERROR:" + err);
 		}
 	});
 	res.sendStatus(200);
 	res.end("test");
+
 });
 
 io.on('connection',function(socket){
-	console.log(socket);
 	socket.on('disconnect', function(){
     	sockets.remove(sockets.extractSessionId(socket))
   	});
