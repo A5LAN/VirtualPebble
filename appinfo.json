@@ -9,7 +9,7 @@
     "resources": {
         "media": [
             {
-                "file": "images/lion.png",
+                "file": "images/menu_icon.png",
                 "menuIcon": true,
                 "name": "IMAGE_MENU_ICON",
                 "type": "png"
@@ -28,6 +28,11 @@
                 "file": "fonts/UbuntuMono-Regular.ttf",
                 "name": "MONO_FONT_14",
                 "type": "font"
+            },
+            {
+                "file": "images/lion.png",
+                "name": "IMAGES_LION_PNG",
+                "type": "png"
             }
         ]
     },
@@ -45,4 +50,3 @@
         "watchface": false
     }
 }
-
