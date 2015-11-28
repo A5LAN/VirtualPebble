@@ -24,7 +24,6 @@ app.post('/data',function(req,res){
 });
 
 io.on('connection',function(socket){
-	console.log(socket);
 	socket.on('disconnect', function(){
     	sockets.remove(sockets.extractSessionId(socket))
   	});
