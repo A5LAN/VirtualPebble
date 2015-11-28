@@ -20,6 +20,11 @@
 			window.configure = function configure(){
 				socket.emit("couple","::ffff:129.100.133.128");
 			}
+
+			window.onload = function() {
+				window.configure();
+			};
+
 			var lastRunningAvgJerk = {x:0,y:0,z:0};
 			var runningAvgJerk = {x:0,y:0,z:0};
 			var dimensions = {"x":1,"y":1,"z":1};
