@@ -57,6 +57,9 @@
 	                                FAR  );
 	var scene = new THREE.Scene();
 
+	var clock = new THREE.Clock();
+
+
 	// the camera starts at 0,0,0 so pull it back
 	camera.position.z = 300;
 
@@ -80,9 +83,6 @@
 	var sphere = new THREE.Mesh(
 	   new THREE.SphereGeometry(radius, segments, rings),
 	   sphereMaterial);
-	sphere.position.x = positionData.x/1000;
-	sphere.position.y = positionData.y/1000;
-	sphere.position.z = positionData.z/1000;
 	// add the sphere to the scene
 	scene.add(sphere);
 
@@ -100,8 +100,23 @@
 	// add to the scene
 	scene.add(pointLight);
 
-	// draw!
-	renderer.render(scene, camera);
+	function animate(t) {
+		requestAnimationFrame(animate);
+		update(clock.getDelta());
+		render(clock.getDelta());
+	}
+	animate();
+
+	function update(dt) {
+		sphere.position.x = positionData.x/1000;
+		sphere.position.y = positionData.y/1000;
+		sphere.position.z = positionData.z/1000;
+		camera.updateProjectionMatrix();
+	}
+
+	function render(dt) {
+		renderer.render(scene, camera);
+	}
 	</script>
 </html>
 
