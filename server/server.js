@@ -17,6 +17,8 @@ app.post('/data',function(req,res){
 			console.log("JSON ERROR:" + err);
 		}
 	});
+	res.sendStatus(200);
+	res.end("test");
 });
 
 var port = 80;

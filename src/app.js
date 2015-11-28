@@ -32,7 +32,8 @@ function dataHandler(data){
 	};
 	ajax(
 		{
-			url: 'http://ianisabitch.xyz/balls',
+			url: 'http://ianisabitch.xyz/data',
+			method: 'POST',
 			type: 'json',
 			data: {accel:accelSum, jerk:jerkSum}
 		},
