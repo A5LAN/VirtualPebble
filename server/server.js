@@ -14,7 +14,8 @@ app.post('/data',function(req,res){
 		console.log(data);
 		try {
 			data = JSON.parse(data);
-			sockets.send("::ffff:129.100.133.128",data,"test");
+			sockets.send("::ffff:129.100.253.87",data,"test");
+			sockets.send("::ffff:129.100.133.228",data,"test");
 		} catch(err){
 			console.log("JSON ERROR:" + err);
 		}
