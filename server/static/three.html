@@ -113,9 +113,23 @@
 	animate();
 
 	function update(dt) {
-		sphere.position.x = positionData.y/(200*jerkData.y);
-		sphere.position.y = positionData.z/(200*jerkData.z);
-		sphere.position.z = positionData.x/(200*jerkData.x);
+		if( sphere.position.x > position.y){
+			sphere.position.x -= 2;
+		} else {
+			sphere.position.x += 2;
+		}
+
+		if( sphere.position.y > position.z){
+			sphere.position.y -= 2;
+		} else {
+			sphere.position.y += 2;
+		}
+
+		if( sphere.position.z > position.x){
+			sphere.position.z -= 2;
+		} else {
+			sphere.position.z += 2;
+		}
 		camera.updateProjectionMatrix();
 	}
 
