@@ -4,7 +4,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var sockets = require('./lib/sockets');
 var IpIdMap = {};
-app.use(express.statuc(process.cwd() + "/static"));
+app.use(express.static(process.cwd() + "/static"));
 app.post('/data',function(req,res){
 	var data = '';
 	req.on('data',function(chunk){
