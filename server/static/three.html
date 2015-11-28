@@ -22,7 +22,7 @@
 			}
 			var lastRunningAvgJerk = {x:0,y:0,z:0};
 			var runningAvgJerk = {x:0,y:0,z:0};
-			var dimensions = ["x","y","z"];
+			var dimensions = {"x":1,"y":1,"z":1};
 			socket.on("test", function(data){
 				positionData = data.accel;
 				jerkData = data.jerk;
