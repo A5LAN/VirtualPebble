@@ -13,7 +13,7 @@ var wind = new UI.Window({ fullscreen: true });
 var image = new UI.Image({
   position: new Vector2(0, 0),
   size: new Vector2(144, 168),
-  banner: 'images/lion.png'
+  image: 'images/lion.png'
 });
 wind.add(image);
 wind.show();
