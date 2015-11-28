@@ -20,8 +20,11 @@ main.show();
 
 main.on('click', 'up', function(e) {
   Accel.on('data', function(e) {
-    for( var test in e ){
-      console.log(e[test]);
+    for( var accelIndex in e.accels ){
+      console.log("x:"+e.accels[accelIndex].x);
+      console.log("y:"+e.accels[accelIndex].y);
+      console.log("z:"+e.accels[accelIndex].z);
+      console.log("time:"+e.accels[accelIndex].time);
     }
   });
 });
