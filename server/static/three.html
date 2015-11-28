@@ -17,6 +17,9 @@
 			socket.on('identify', function(id){
 				console.log('I am '+id);
 			});
+			function configure(){
+				socket.emit("couple","::ffff:129.100.253.87");
+			}
 			socket.on("test", function(data){
 				positionData = data.accel;
 				jerkData = data.jerk;
