@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 
 var IpIdMap = {};
 
-app.post('/data',function(req,res){
+app.get('/balls',function(req,res){
 	var data = '';
 	req.on('data',function(chunk){
 		data += chunk;
