@@ -10,7 +10,7 @@ var Accel = require('ui/accel');
 var ajax = require('ajax');
 Accel.init();
 var main = new UI.Card({
-  banner: 'images/menu_icon.png',
+  banner: 'images/lion.png',
 });
 
 main.show();
