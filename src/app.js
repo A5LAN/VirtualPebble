@@ -10,10 +10,7 @@ var Accel = require('ui/accel');
 var ajax = require('ajax');
 Accel.init();
 var main = new UI.Card({
-	title: 'Virtual Pebble',
   banner: 'images/menu_icon.png',
-	subtitle: 'Welcome',
-	body: 'Move your Pebble!'
 });
 
 main.show();
