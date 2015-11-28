@@ -113,19 +113,19 @@
 	animate();
 
 	function update(dt) {
-		if( sphere.position.x > position.y){
+		if( sphere.position.x > positionData.y){
 			sphere.position.x -= 2;
 		} else {
 			sphere.position.x += 2;
 		}
 
-		if( sphere.position.y > position.z){
+		if( sphere.position.y > positionData.z){
 			sphere.position.y -= 2;
 		} else {
 			sphere.position.y += 2;
 		}
 
-		if( sphere.position.z > position.x){
+		if( sphere.position.z > positionData.x){
 			sphere.position.z -= 2;
 		} else {
 			sphere.position.z += 2;
