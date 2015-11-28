@@ -9,7 +9,7 @@ var Vector2 = require('vector2');
 var Accel = require('ui/accel');
 var ajax = require('ajax');
 Accel.init();
-
+Accel.config({subscribe:true});
 var main = new UI.Card({
   title: 'Pebble.js',
   icon: 'images/menu_icon.png',
