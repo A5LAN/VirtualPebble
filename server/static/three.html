@@ -13,16 +13,17 @@
 		<script type="text/javascript">
 			var socket = io();
 			var positionData = {x:0,y:0,z:0};
+			var jerkData = {x:1,y:1,z:1};
 			socket.on('identify', function(id){
 				console.log('I am '+id);
 			});
 			socket.on("test", function(data){
 				positionData = data.accel;
+				jerkData = data.jerk;
 			});
 		</script>
 	</head>
 	<body>
-
 		<div id="container">
 
 
@@ -112,9 +113,9 @@
 	animate();
 
 	function update(dt) {
-		sphere.position.x = sphere.position.x/2 + positionData.y/500;
-		sphere.position.y = sphere.position.z/2 + positionData.z/500;
-		sphere.position.z = sphere.position.y/2 + positionData.x/500;
+		sphere.position.x = positionData.y/(200*jerkData.y);
+		sphere.position.y = positionData.z/(200*jerkData.z);
+		sphere.position.z = positionData.x/(200*jerkData.x);
 		camera.updateProjectionMatrix();
 	}
 
