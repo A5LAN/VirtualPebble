@@ -29,12 +29,12 @@
 			var dimensions = {"x":1,"y":1,"z":1};
 			socket.on("test", function(data){
 				positionData = data.accel;
-				
-			console.log(data.accel);
-			
-			var dimensions = ["x","y","z"]
-			console.log(dimensions);
-				
+			var pos_data = 	{}
+			// console.log(data.accel);
+			pos_data.push(data.accel);
+			// var dimensions = ["x","y","z"]
+			console.log(pos_data);
+							
 			});
 		</script>
 	</head>
