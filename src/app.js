@@ -20,6 +20,8 @@ main.show();
 
 main.on('click', 'up', function(e) {
   Accel.on('data', function(e) {
-    console.log(e);
+    for( var test in e ){
+      console.log(e[test]);
+    }
   });
 });
