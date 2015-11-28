@@ -13,7 +13,7 @@ var main = new UI.Card({
 	title: 'Virtual Pebble',
 	icon: 'images/menu_icon.png',
 	subtitle: 'Welcome',
-	body: 'Press any button.'
+	body: 'Move your Pebble!'
 });
 
 main.show();
