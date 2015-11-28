@@ -13,7 +13,7 @@
 		<script type="text/javascript">
 			var socket = io();
 			var positionData = {x:0,y:0,z:0};
-			var jerkData = {x:1,y:1,z:1};
+			
 			socket.on('identify', function(id){
 				console.log('I am '+id);
 			});
@@ -25,54 +25,11 @@
 				window.configure();
 			};
 
-			var lastRunningAvgJerk = {x:0,y:0,z:0};
-			var runningAvgJerk = {x:0,y:0,z:0};
+			
 			var dimensions = {"x":1,"y":1,"z":1};
 			socket.on("test", function(data){
 				positionData = data.accel;
-				jerkData = data.jerk;
 				
-				//Do the running avg
-				for(var degree in dimensions){
-					runningAvgJerk[degree] = jerkData[degree]/2 + runningAvgJerk[degree]/2
-					if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*10){
-						console.log("above 10");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*9.5){
-						console.log("above 9.5");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*9){
-						console.log("above 9");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*8.5){
-						console.log("above 8.5");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*8){
-						console.log("above 8");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*7.5){
-						console.log("above 7.5");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*7){
-						console.log("above 7");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*6.5){
-						console.log("above 6.5");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*6){
-						console.log("above 6");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*5.5){
-						console.log("above 5.5");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*5){
-						console.log("above 5");
-					}
-					else { 
-						console.log("other");
-					}
-				}
-				lastRunningAvgJerk = runningAvgJerk;
 				
 			});
 		</script>
