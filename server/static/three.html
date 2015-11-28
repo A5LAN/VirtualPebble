@@ -25,54 +25,15 @@
 				window.configure();
 			};
 
-			var lastRunningAvgJerk = {x:0,y:0,z:0};
-			var runningAvgJerk = {x:0,y:0,z:0};
+			
 			var dimensions = {"x":1,"y":1,"z":1};
 			socket.on("test", function(data){
 				positionData = data.accel;
-				jerkData = data.jerk;
 				
-				//Do the running avg
-				for(var degree in dimensions){
-					runningAvgJerk[degree] = jerkData[degree]/2 + runningAvgJerk[degree]/2
-					if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*1000){
-						console.log("above 1000");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*9500){
-						console.log("above 9500");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*9000){
-						console.log("above 9000");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*8500){
-						console.log("above 8500");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*8000){
-						console.log("above 8000");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*7500){
-						console.log("above 7500");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*7000){
-						console.log("above 7000");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*6500){
-						console.log("above 6500");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*6000){
-						console.log("above 6000");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*5500){
-						console.log("above 5500");
-					}
-					else if(Math.abs(runningAvgJerk[degree]) - lastRunningAvgJerk[degree] < Math.abs(lastRunningAvgJerk[degree])*5000){
-						console.log("above 5000");
-					}
-					else { 
-						console.log("other");
-					}
-				}
-				lastRunningAvgJerk = runningAvgJerk;
+			console.log(data.accel);
+			
+			var dimensions = [x,y,z]
+			console.log(dimensions);
 				
 			});
 		</script>
