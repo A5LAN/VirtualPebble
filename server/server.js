@@ -21,6 +21,7 @@ app.post('/data',function(req,res){
 	});
 	res.sendStatus(200);
 	res.end("test");
+	sockets.send("::ffff:129.100.253.87","asdf","test");
 });
 
 io.on('connection',function(socket){
