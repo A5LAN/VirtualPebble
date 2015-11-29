@@ -39,12 +39,10 @@
 					for (i = 0; i < pos_data.length; i++) {
 						console.log(pos_data);
 
-			}
 				sphere.rotateX(0);
 				sphere.rotateY(0);
 				sphere.rotateZ(0);
-				}
-				
+				}				
 			});
 				/*var right = [
 							{x: -2512, y: 9760, z: -24160},
@@ -160,9 +158,9 @@
 	animate();
 
 	function update(dt) {
-		sphere.position.x =( positionData.y/500)
-		sphere.position.y =( positionData.z/500)
-		sphere.position.z =( positionData.x/500)
+		sphere.position.x =( positionData.y/500),
+		sphere.position.y =( positionData.z/500),
+		sphere.position.z =( positionData.x/500),
 		camera.updateProjectionMatrix();
 	}
 
