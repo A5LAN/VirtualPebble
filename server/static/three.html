@@ -26,7 +26,7 @@
 			};
 
 			
-			var dimensions = {"x":1,"y":1,"z":1};
+			var dimensions = {1,1,1};
 			var pos_data = 	new Array();
 			socket.on("test", function(data){
 				positionData = data.accel;
@@ -37,16 +37,12 @@
 				// var dimensions = ["x","y","z"]
 				console.log(pos_data.length);
 					for (i = 0; i < pos_data.length; i++) {
-						var x = pos_data.split(",");
-						for (var j = 0; j < x.length; j++){
-							console.log(x);			}
-
-						}
+						console.log(pos_data);
 
 				sphere.rotateX(0);
 				sphere.rotateY(0);
 				sphere.rotateZ(0);
-								
+				}				
 			});
 				/*var right = [
 							{x: -2512, y: 9760, z: -24160},
