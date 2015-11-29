@@ -29,9 +29,11 @@
 			var dimensions = {"x":1,"y":1,"z":1};
 			socket.on("test", function(data){
 				positionData = data.accel;
-				var pos_data = 	[];
+
+				var pos_data = 	new Array();
+				pos_data.push(new Object());
 				// console.log(data.accel);
-				pos_data.push(data.accel);
+				pos_data.push(positionData);
 				// var dimensions = ["x","y","z"]
 				console.log(pos_data.length);
 				if (pos_data.length ==10){
