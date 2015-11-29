@@ -27,10 +27,10 @@
 
 			
 			var dimensions = {"x":1,"y":1,"z":1};
+			var pos_data = 	new Array();
 			socket.on("test", function(data){
 				positionData = data.accel;
-
-				var pos_data = 	new Array();
+				
 				// pos_data.push(new Object());
 				// console.log(data.accel);
 				pos_data.push(positionData);
