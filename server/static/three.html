@@ -130,10 +130,6 @@
     	vertexColors: THREE.VertexColors 
 	});
 
-	var directionalLight = new THREE.DirectionalLight(0xEEEEEE);
-	directionalLight.position.set(10, 1, 1).normalize();
-	kage.scene.add(directionalLight);
-
 	var cube = new THREE.Mesh(new THREE.CubeGeometry(300, 300, 300,1,1,1), material);
 	cube.dynamic = true;
 	kage.scene.add(cube);
