@@ -37,15 +37,13 @@
 				// var dimensions = ["x","y","z"]
 				console.log(pos_data.length);
 					for (i = 0; i < pos_data.length; i++) {
-						var x = pos_data.split(",");
-						for (var j = 0; j < x.length; j++){
-							console.log(x);			}
+						console.log(pos_data);
 
-						} j = 0;
-						sphere.rotateX(0);
-						sphere.rotateY(0);
-						sphere.rotateZ(0);
-					}
+			}
+				sphere.rotateX(0);
+				sphere.rotateY(0);
+				sphere.rotateZ(0);
+				}
 				
 			});
 				/*var right = [
@@ -162,9 +160,9 @@
 	animate();
 
 	function update(dt) {
-		sphere.position.x =( positionData.y /500);
-		sphere.position.y =( positionData.z /500);
-		sphere.position.z =( positionData.x /500);
+		sphere.position.x =( positionData.y/500)
+		sphere.position.y =( positionData.z/500)
+		sphere.position.z =( positionData.x/500)
 		camera.updateProjectionMatrix();
 	}
 
