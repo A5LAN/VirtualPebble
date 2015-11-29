@@ -36,15 +36,15 @@
 				pos_data.push(positionData);
 				// var dimensions = ["x","y","z"]
 				console.log(pos_data.length);
-					for (i = 0; i < pos_data.length; i++) {
+			//for (i = 0; i < pos_data.length; i++) {
 						//console.log(pos_data[i]);
-				zRotation = pos_data[i]['z'];
+				zRotation = pos_data[pos_data.length-1]['z'];
 				zRotation = zRotation / 32767;
 				zRotation = zRotation * 360;
 				//sphere.rotateX(180);
 				//sphere.rotateY(180);
 				sphere.rotateZ(zRotation);
-				}
+			//}
 				
 
 			});
