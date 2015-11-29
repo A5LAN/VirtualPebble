@@ -134,10 +134,12 @@
 	// we will cover the sphereMaterial next!
 	var sphere = new THREE.Mesh(
 	   new THREE.CubeGeometry(100,100,100),
-	   material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true} );
+	   sphereMaterial);
+	   material = new THREE.MeshBasicMaterial ( { color: 0xffffff, wireframe: true} );
 	   cube = new THREE.Mesh (geometry, material );
 	   scene.add (cube);
-	   sphereMaterial);
+	   
+
 	// add the sphere to the scene
 	scene.add(sphere);
 
