@@ -133,13 +133,8 @@
 	// create a new mesh with sphere geometry -
 	// we will cover the sphereMaterial next!
 	var sphere = new THREE.Mesh(
-	   geometry = new THREE.CubeGeometry(100,100,100),
+	   new THREE.CubeGeometry(100,50,100),
 	   sphereMaterial);
-	   material = new THREE.MeshBasicMaterial ( { color: 0xffffff, wireframe: true} );
-	   cube = new THREE.Mesh (geometry, material );
-	   scene.add (cube);
-	   
-
 	// add the sphere to the scene
 	scene.add(sphere);
 
