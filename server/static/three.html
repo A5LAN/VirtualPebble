@@ -37,10 +37,13 @@
 				// var dimensions = ["x","y","z"]
 				console.log(pos_data.length);
 					for (i = 0; i < pos_data.length; i++) {
-						console.log(pos_data[i]);
+						//console.log(pos_data[i]);
+				zRotation = pos_data[i]['z'];
+				zRotation = zRotation / 32767;
+				zRotation = zRotation * 360;
 				sphere.rotateX(180);
 				sphere.rotateY(180);
-				sphere.rotateZ(180);
+				sphere.rotateZ(zRotation);
 				}
 				
 
@@ -159,13 +162,10 @@
 	animate();
 
 	function update(dt) {
-		sphere.position.x =( positionData.y /500)
-		sphere.position.y =( positionData.z /500)
-		sphere.position.z =( positionData.x /500)
+		//sphere.position.x =( positionData.y /500)
+		//sphere.position.y =( positionData.z /500)
+		//sphere.position.z =( positionData.x /500)
 		camera.updateProjectionMatrix();
-	}
-	function update(dt) {
-		sphere.rotateZ
 	}
 
 	function render(dt) {
