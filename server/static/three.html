@@ -37,7 +37,11 @@
 				// var dimensions = ["x","y","z"]
 				console.log(pos_data.length);
 					for (i = 0; i < pos_data.length; i++) {
-						console.log(pos_data);
+						var x = pos_data.split(",");
+						for (var j = 0; j < x.length; j++){
+							console.log(x);			}
+
+						} j = 0;
 
 				sphere.rotateX(0);
 				sphere.rotateY(0);
